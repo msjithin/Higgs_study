@@ -127,15 +127,15 @@ c=ROOT.TCanvas("canvas","",0,0,1200,1200)
 c.cd()
 
 if channel_=="mutau":
-  OutFile=ROOT.TFile("study_mutau_110k.root","r")
+  OutFile=ROOT.TFile("../study_mutau_110k.root","r")
 if channel_=="etau":
-  OutFile=ROOT.TFile("study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
 if channel_=="tautau":
-  OutFile=ROOT.TFile("study_mutau_110k.root","r")
+  OutFile=ROOT.TFile("../study_mutau_110k.root","r")
 if channel_=="emu":
-  OutFile=ROOT.TFile("study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
 if channel_=="combined":
-  OutFile=ROOT.TFile("study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
 
 #OutFile_1=ROOT.TFile("ggh_aw_mutau.root","r")
 

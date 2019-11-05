@@ -204,19 +204,15 @@ void Analyzer_mutau_study::Loop(Long64_t maxEvents, int reportEvery, string Samp
 		}
 	      
 	      // std::cout<<"tau gen size:"<<tauGenCand.size()<< " , tauh size:"<< tauhGenCand.size()<<  endl;
-	      //if (!(tauhGenCand.size()>0) )continue;
 	      if ( mt1==false ||  mt2==false)continue;
-	      
-
-
-
-
-	       
+	     
+	      if (!(tauhGenCand.size()>0) )continue;
 	      nHToMuTau++;
-	      if( tauNeuGenCand.size()>0)
+	      if( tauNeuGenCand.size()>0 )
 		{
+		  //if(mt1==true)
+		  myTau.SetPtEtaPhiE(mcPt->at(tauhGenCand[0]), mcEta->at(tauhGenCand[0]), mcPhi ->at(tauhGenCand[0]), mcE->at(tauhGenCand[0]));
 		  
-		  myTau.SetPtEtaPhiE(mcPt->at(tauGenCand[0]), mcEta->at(tauGenCand[0]), mcPhi ->at(tauGenCand[0]), mcE->at(tauGenCand[0]));
 		  myNeu.SetPtEtaPhiE(mcPt->at(tauNeuGenCand[0]), mcEta->at(tauNeuGenCand[0]), mcPhi ->at(tauNeuGenCand[0]), mcE->at(tauNeuGenCand[0]));		    
 		  myTauh = myTau - myNeu;
 		  
@@ -516,7 +512,8 @@ std::vector<int> Analyzer_mutau_study::found_tauh(){
   for(int i=0; i<nMC;i++){
     if ( fabs((*mcPID)[i])==15  ) found_T=true;
     if ( mcTauDecayMode->at(i)>>2&1==1 || mcTauDecayMode->at(i)>>3&1==1 || mcTauDecayMode->at(i)>>4&1==1 || mcTauDecayMode->at(i)>>5&1==1
-	 || mcTauDecayMode->at(i)>>6&1==1 || mcTauDecayMode->at(i)>>7&1==1 || mcTauDecayMode->at(i)>>8&1==1 ) found_d=true;
+	 || mcTauDecayMode->at(i)>>6&1==1 || mcTauDecayMode->at(i)>>7&1==1 || mcTauDecayMode->at(i)>>8&1==1 
+	 || mcTauDecayMode->at(i)>>9&1==1 || mcTauDecayMode->at(i)>>10&1==1 || mcTauDecayMode->at(i)>>11&1==1) found_d=true;
     if (found_d==true )tmpCand.push_back(i);
   }
   return tmpCand;
