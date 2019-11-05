@@ -1,0 +1,20 @@
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 9990000 events.
+Finished entry 0/9989999
+runAnalyzer_etau.sh: line 4: 2933069 Terminated              ./analyze_etau /hdfs/store/user/jmadhusu/_MC2018_Autumn18_monoHiggs_16Sept_2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/crab_job_GluGluHToTauTau/190916_090829/0000/ ggh_et_new0.root -1 1000 2018_test
+********** for MC *********
+All files added.
+Initializing chain.
+runAnalyzer_etau.sh: line 5: 2935247 Terminated              ./analyze_etau /hdfs/store/user/jmadhusu/_MC2018_Autumn18_monoHiggs_16Sept_2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/crab_job_GluGluHToTauTau/190916_090829/0001/ ggh_et_new1.root -1 1000 2018_test
+Runtime = 448
+hadd Target file: GGHtoTauTau_etau_new.root
+hadd compression setting for all ouput: 1
+hadd Source file 1: ggh_et_new0.root
+Error in <TFile::ReadBuffer>: error reading all requested bytes from file ggh_et_new0.root, got 228 of 300
+Error in <TFile::Init>: ggh_et_new0.root failed to read the file type data.
+Error in <TFileMerger::AddFile>: cannot open file ggh_et_new0.root
+hadd exiting due to error in ggh_et_new0.root

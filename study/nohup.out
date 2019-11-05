@@ -1,0 +1,30 @@
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 110000 events.
+Finished entry 109999/109999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 110000.000000
+Inspected genWeightd 108830.000000
+   METFiltersPassed 88525.000000
+     GoodMuonPassed 2547.000000
+    SingleTrgPassed 4239.000000
+      GoodTauPassed 2550.000000
+         opp charge 344.000000
+ PassedThirdLepVeto 311.000000
+     PassedBjetVeto 298.000000
+       DeltaRPassed 298.000000
+*******************************************
+*******************************************
+Number of events inspected: 110000
+Number of events inspected (minus negative gen. weights): 108830.000000
+*******************************************
+    n higgs found = 110000
+    n h->mutau    = 22077
+    n found_mt    = 22077
+    n expected    = 24310.000000
+Runtime = 149

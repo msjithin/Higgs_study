@@ -1,0 +1,104 @@
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 9990000 events.
+Finished entry 0/9989999
+Finished entry 400000/9989999
+Finished entry 800000/9989999
+Finished entry 1200000/9989999
+Finished entry 1600000/9989999
+Finished entry 2000000/9989999
+Finished entry 2400000/9989999
+Finished entry 2800000/9989999
+Finished entry 3200000/9989999
+Finished entry 3600000/9989999
+Finished entry 4000000/9989999
+Finished entry 4400000/9989999
+Finished entry 4800000/9989999
+Finished entry 5200000/9989999
+Finished entry 5600000/9989999
+Finished entry 6000000/9989999
+Finished entry 6400000/9989999
+Finished entry 6800000/9989999
+Finished entry 7200000/9989999
+Finished entry 7600000/9989999
+Finished entry 8000000/9989999
+Finished entry 8400000/9989999
+Finished entry 8800000/9989999
+Finished entry 9200000/9989999
+Finished entry 9600000/9989999
+Finished entry 9989999/9989999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 9990000.000000
+Inspected genWeightd 9887308.000000
+   METFiltersPassed 9989767.000000
+    SingleTrgPassed 9989767.000000
+ GoodElectronPassed 989666.000000
+      GoodTauPassed 37424.000000
+         opp charge 37161.000000
+       DeltaRPassed 37152.000000
+ PassedThirdLepVeto 36482.000000
+     PassedBjetVeto 34618.000000
+*******************************************
+*******************************************
+Number of events inspected: 9990000
+Number of events inspected (minus negative gen. weights): 9887308.000000
+*******************************************
+    n higgs found = 9990000
+SysError in <TFile::Flush>: error flushing file ggh_tt_new0.root (Input/output error)
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:2585000
+Running over 2585000 events.
+Finished entry 0/2584999
+Finished entry 100000/2584999
+Finished entry 200000/2584999
+Finished entry 300000/2584999
+Finished entry 400000/2584999
+Finished entry 500000/2584999
+Finished entry 600000/2584999
+Finished entry 700000/2584999
+Finished entry 800000/2584999
+Finished entry 900000/2584999
+Finished entry 1000000/2584999
+Finished entry 1100000/2584999
+Finished entry 1200000/2584999
+Finished entry 1300000/2584999
+Finished entry 1400000/2584999
+Finished entry 1500000/2584999
+Finished entry 1600000/2584999
+Finished entry 1700000/2584999
+Finished entry 1800000/2584999
+Finished entry 1900000/2584999
+Finished entry 2000000/2584999
+Finished entry 2100000/2584999
+Finished entry 2200000/2584999
+Finished entry 2300000/2584999
+Finished entry 2400000/2584999
+Finished entry 2500000/2584999
+Finished entry 2584999/2584999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 2585000.000000
+Inspected genWeightd 2558138.000000
+   METFiltersPassed 2584946.000000
+    SingleTrgPassed 2584946.000000
+ GoodElectronPassed 255467.000000
+      GoodTauPassed 9624.000000
+         opp charge 9565.000000
+       DeltaRPassed 9561.000000
+ PassedThirdLepVeto 9387.000000
+     PassedBjetVeto 8897.000000
+*******************************************
+*******************************************
+Number of events inspected: 2585000
+Number of events inspected (minus negative gen. weights): 2558138.000000
+*******************************************
+    n higgs found = 2585000

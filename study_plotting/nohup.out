@@ -1,0 +1,140 @@
+================================================================
+
+====> Created exe file : 
+-rwxrwxr-x 1 ms ms 64440 Oct 28 05:20 postAnalyzer_mutau.exe
+====> Done.
+================================================================
+*************  Input file         ************ 
+               study_mutau_new.root 
+*************  Output written to  ************ 
+               ggh_aw_mutau.root 
+****************************************************** 
+************* ngen = 1.24454e+07 ************* 
+ weight = 0.0222377532
+*************** root file made ***************
+GluGluHToTauTau_after_weights.root exist
+hadd Target file: GluGluHToTauTau_after_weights.root
+hadd compression setting for all ouput: 1
+hadd Source file 1: ggh_aw_mutau.root
+hadd Target path: GluGluHToTauTau_after_weights.root:/
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_0.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_0
+ratio maximum =  1.01257288456
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_1.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_1
+ratio maximum =  1.0
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_2.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_2
+ratio maximum =  0.989795923233
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_3.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_3
+ratio maximum =  0.94339621067
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_4.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_4
+ratio maximum =  0.889550626278
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_5.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_5
+ratio maximum =  0.826851069927
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_6.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_6
+ratio maximum =  0.361649096012
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_7.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_7
+ratio maximum =  0.361649096012
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_8.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_8
+ratio maximum =  0.115602403879
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_9.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_9
+ratio maximum =  0.0940494090319
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_10.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_10
+ratio maximum =  0.0822932347655
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_11.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_11
+ratio maximum =  0.0372278913856
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_12.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_12
+ratio maximum =  0.0333091653883
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_13.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_13
+ratio maximum =  0.0673475563526
+PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused
+Error in <TGClient::TGClient>: can't open display "localhost:10.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_14.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_14
+ratio maximum =  0.0622363574803
+*************** plots made ***************

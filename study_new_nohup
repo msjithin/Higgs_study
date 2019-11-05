@@ -1,0 +1,59 @@
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 9990000 events.
+Finished entry 9989999/9989999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 9990000.000000
+Inspected genWeightd 9887308.000000
+   METFiltersPassed 9989767.000000
+     GoodMuonPassed 1209414.000000
+    SingleTrgPassed 455826.000000
+      GoodTauPassed 635097.000000
+         opp charge 64111.000000
+ PassedThirdLepVeto 56796.000000
+     PassedBjetVeto 54566.000000
+       DeltaRPassed 54566.000000
+*******************************************
+*******************************************
+Number of events inspected: 9990000
+Number of events inspected (minus negative gen. weights): 9887308.000000
+*******************************************
+    n higgs found = 9990000
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:2585000
+Running over 2585000 events.
+Finished entry 2584999/2584999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 2585000.000000
+Inspected genWeightd 2558138.000000
+   METFiltersPassed 2584946.000000
+     GoodMuonPassed 312766.000000
+    SingleTrgPassed 117882.000000
+      GoodTauPassed 164064.000000
+         opp charge 16572.000000
+ PassedThirdLepVeto 14659.000000
+     PassedBjetVeto 14073.000000
+       DeltaRPassed 14073.000000
+*******************************************
+*******************************************
+Number of events inspected: 2585000
+Number of events inspected (minus negative gen. weights): 2558138.000000
+*******************************************
+    n higgs found = 2585000
+Runtime = 10550
+study_mutau_new.root exist
+hadd Target file: study_mutau_new.root
+hadd compression setting for all ouput: 1
+hadd Source file 1: study_mt_1.root
+hadd Source file 2: study_mt_2.root
+hadd Target path: study_mutau_new.root:/

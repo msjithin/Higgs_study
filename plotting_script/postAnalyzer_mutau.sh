@@ -1,0 +1,60 @@
+
+./Make.sh postAnalyzer_mutau.C
+./postAnalyzer_mutau.exe GGHtoTauTau_mt_new.root ggh_aw_mutau.root GluGluHToTauTau GluGluHToTauTau mutau 0
+./postAnalyzer_mutau.exe GGHtoTauTau_etau_new.root ggh_aw_etau.root GluGluHToTauTau GluGluHToTauTau etau 0
+./postAnalyzer_mutau.exe GGHtoTauTau_tautau_new.root ggh_aw_tautau.root GluGluHToTauTau GluGluHToTauTau tautau 0
+./postAnalyzer_mutau.exe GGHtoTauTau_em_new00.root ggh_aw_emu.root GluGluHToTauTau GluGluHToTauTau emu 0
+echo "*************** root file made ***************"
+FILE=GluGluHToTauTau_after_weights.root
+if [ -f "$FILE" ]; then
+    echo "$FILE exist"
+    rm $FILE
+else 
+    echo "$FILE does not exist"
+fi
+hadd GluGluHToTauTau_after_weights.root ggh_aw_mutau.root ggh_aw_etau.root ggh_aw_tautau.root ggh_aw_emu.root
+
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 0 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 1 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 2 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 3 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 4 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 5 -ch mutau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 6 -ch mutau
+
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 0 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 1 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 2 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 3 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 4 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 5 -ch etau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 6 -ch etau
+
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 0 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 1 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 2 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 3 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 4 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 5 -ch tautau
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 6 -ch tautau
+
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 0 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 1 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 2 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 3 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 4 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 5 -ch emu
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 6 -ch emu
+
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 0 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 1 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 2 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 3 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 4 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 5 -ch combined
+python makeplot_mutauh.py -lY -name Higgs_pt -cat 6 -ch combined
+
+
+cp plot_* /afs/hep.wisc.edu/home/ms/public_html/boosted_study
+
+echo "*************** plots made ***************"
