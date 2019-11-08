@@ -130,105 +130,155 @@ void Analyzer_mutau_study::Loop(Long64_t maxEvents, int reportEvery, string Samp
    std::cout<<"nentries:"<<nentries<<std::endl;
    //Look at up to maxEvents events, or all if maxEvents == -1.
    Long64_t nentriesToCheck = nentries;
-	if (maxEvents != -1LL && nentries > maxEvents)
-		nentriesToCheck = maxEvents;
-	nTotal = nentriesToCheck;
-	Long64_t nbytes = 0, nb = 0;
-
-	std::cout<<"Running over "<<nTotal<<" events."<<std::endl;
-	TStopwatch sw;
-	sw.Start();
-	for (Long64_t jentry=0; jentry<nentriesToCheck;jentry++)
-	{
-	  
-	  event_.clear();
-	  event_info.clear();
-	  muCand.clear();
-	  tauCand.clear();
-	  higgsCand.clear();
-	  eleGenCand.clear();   
-	  muGenCand.clear();
-	  tauGenCand.clear();
-	  tauhGenCand.clear();
-	  tauNeuGenCand.clear();
+   if (maxEvents != -1LL && nentries > maxEvents)
+     nentriesToCheck = maxEvents;
+   nTotal = nentriesToCheck;
+   Long64_t nbytes = 0, nb = 0;
+   
+   std::cout<<"Running over "<<nTotal<<" events."<<std::endl;
+   TStopwatch sw;
+   sw.Start();
+   for (Long64_t jentry=0; jentry<nentriesToCheck;jentry++)
+     {
        
-	  Long64_t ientry = LoadTree(jentry);
-	  if (ientry < 0) break;
-	  nb = fChain->GetEntry(jentry);   nbytes += nb;
-	  double inspected_event_weight = 1.0; 
-	  fabs(genWeight) > 0.0 ? inspected_event_weight *= genWeight/fabs(genWeight) : inspected_event_weight = 0.0;
-	  nInspected_genWeighted += inspected_event_weight;  
-	  nInspected += 1; 
-	  //h_insEvents->SetBinContent(1, nInspected_genWeighted);
-	  //=1.0 for real data
-	  double event_weight=1.0;
-	  double sf_tauID = 1.0; 
-	  double sf_IsoEff = 1.0; 
-	  double sf_muTrg = 1.0;
-	  double sf_muID = 1.0;
-	  int report_i=0;
-	  numberOfEvents+=event_weight;
-	  event_weight=inspected_event_weight;
-	  bool found_H=false;
-	  higgsCand = found_higgs();
-	  muGenCand = found_muon();
-	  eleGenCand = found_electron();
-	  tauGenCand = found_tau();
-	  tauhGenCand = found_tauh();
-	  tauNeuGenCand = found_tauNeu();
-	  //mother_=found_mother();
-	  //daughter_=found_daughter();
-	  if(!(higgsCand.size() >0 ))continue;	   
-	  found_H=true;
-	  if (found_H==true)nHiggs++;
-	  h_Hpt_gen_org->Fill(mcPt->at(higgsCand[0]), event_weight);
-	  //std::cout<<"jentry = "<< jentry<<  endl;
-	  //for(int i=0; i<mcDaughterPID->size();i++)
-	  //  std::cout<<"     dau pid : "<< mcDaughterPID->at(i)<<endl;
-
-	  if( tauGenCand.size()>0 &&  muGenCand.size()>0 )
-	    {
-	      //if (!(  mcStatusFlag->at(higgsCand[0])>>8&1==1 )) continue;
-	      //bool found_e=false; bool found_m=false; bool found_t=false; 
-	      bool found_status=false;
-	      int found_m=0; int found_e=0; int found_t=0;
-	      bool mt1=false; bool mt2=false; 
-	      daughter_=found_daughter();
-	      //std::cout<<"jentry = "<< jentry<<  endl;
-	      found_mt++;
-	      
-	      for(int i=0; i<muGenCand.size(); i++)
-		{
-		  if ( mcCharge->at(tauGenCand[0])*mcCharge->at(muGenCand[i])<0 && mcStatus->at(tauGenCand[1])==2 ) mt1=true;
-		  if ( mcCharge->at(tauGenCand[1])*mcCharge->at(muGenCand[i])<0 && mcStatus->at(tauGenCand[0])==2 ) mt2=true;
-		}
-	      
-	      // std::cout<<"tau gen size:"<<tauGenCand.size()<< " , tauh size:"<< tauhGenCand.size()<<  endl;
-	      if ( mt1==false ||  mt2==false)continue;
-	     
-	      if (!(tauhGenCand.size()>0) )continue;
-	      nHToMuTau++;
-	      if( tauNeuGenCand.size()>0 )
-		{
-		  //if(mt1==true)
-		  myTau.SetPtEtaPhiE(mcPt->at(tauhGenCand[0]), mcEta->at(tauhGenCand[0]), mcPhi ->at(tauhGenCand[0]), mcE->at(tauhGenCand[0]));
-		  
-		  myNeu.SetPtEtaPhiE(mcPt->at(tauNeuGenCand[0]), mcEta->at(tauNeuGenCand[0]), mcPhi ->at(tauNeuGenCand[0]), mcE->at(tauNeuGenCand[0]));		    
-		  myTauh = myTau - myNeu;
-		  
-		  h_Hpt_gen->Fill(mcPt->at(higgsCand[0]), event_weight);
-		  h_visMass_gen->Fill(mcMass->at(higgsCand[0]), event_weight);
-		  h_mu_pt ->Fill( mcPt->at(muGenCand[0]), event_weight);
-		  h_mu_phi->Fill(mcPhi->at(muGenCand[0]), event_weight);
-		  h_mu_eta->Fill(mcEta->at(muGenCand[0]), event_weight);
-		  h_tau_pt ->Fill( myTauh.Pt(), event_weight);
-		  h_tau_phi->Fill( myTauh.Phi(), event_weight);
-		  h_tau_eta->Fill( myTauh.Eta(), event_weight);
-		}
-	    }
-	
-	  muCand = getMuCand(20,2.4); tauCand = getTauCand(30,2.3);
-	  if(metFilters==0)
+       event_.clear();
+       event_info.clear();
+       muCand.clear();
+       tauCand.clear();
+       higgsCand.clear();
+       eleGenCand.clear();   
+       muGenCand.clear();
+       tauGenCand.clear();
+       tauhGenCand.clear();
+       tauNeuGenCand.clear();
+       
+       Long64_t ientry = LoadTree(jentry);
+       if (ientry < 0) break;
+       nb = fChain->GetEntry(jentry);   nbytes += nb;
+       double inspected_event_weight = 1.0; 
+       fabs(genWeight) > 0.0 ? inspected_event_weight *= genWeight/fabs(genWeight) : inspected_event_weight = 0.0;
+       nInspected_genWeighted += inspected_event_weight;  
+       nInspected += 1; 
+       //h_insEvents->SetBinContent(1, nInspected_genWeighted);
+       //=1.0 for real data
+       double event_weight=1.0;
+       double sf_tauID = 1.0; 
+       double sf_IsoEff = 1.0; 
+       double sf_muTrg = 1.0;
+       double sf_muID = 1.0;
+       int report_i=0;
+       numberOfEvents+=event_weight;
+       event_weight=inspected_event_weight;
+       bool found_H=false;
+       higgsCand = found_higgs();
+       muGenCand = found_muon();
+       eleGenCand = found_electron();
+       tauGenCand = found_tau();
+       tauhGenCand = found_tauh();
+       tauNeuGenCand = found_tauNeu();
+       //mother_=found_mother();
+       //daughter_=found_daughter();
+       if(!(higgsCand.size() >0 ))continue;	   
+       found_H=true;
+       if (found_H==true)nHiggs++;
+       h_Hpt_gen_org->Fill(mcPt->at(higgsCand[0]), event_weight);
+       //std::cout<<"jentry = "<< jentry<<  endl;
+       //for(int i=0; i<mcMotherPID->size();i++)
+       //std::cout<<i<<".      mother pid : "<< mcMotherPID->at(i)<<endl;
+       //std::cout<<" nMC = "<< nMC<< " mcIndex = " <<mcIndex->size()<< "mother size = "<<mcMotherPID->size()<< endl;
+       if( tauGenCand.size()>0 )
+	 {
+	   
+	   std::vector<int> index_t1; index_t1.clear();
+	   std::vector<int> index_t2; index_t2.clear();
+	   std::vector<int> index_m1; index_m1.clear();
+	   std::vector<int> index_m2; index_m2.clear();
+	   std::vector<int> index_e1; index_e1.clear();
+	   std::vector<int> index_e2; index_e2.clear();
+	   std::vector<int> index_nu1; index_nu1.clear();
+	   std::vector<int> index_nu2; index_nu2.clear();
+	   //std::cout<<"tau size:"<<tauGenCand.size()<<", mu size :"<<muGenCand.size()<<" , mom size : "<<mcMotherPID->size()<<", nMC:"<<nMC<<endl;
+	   for (int i=0; i<tauGenCand.size(); i++)
+	     {
+	       if( mcPID->at(tauGenCand[i])==  15 ) index_t1.push_back(tauGenCand[i]);
+	       if( mcPID->at(tauGenCand[i])== -15 ) index_t2.push_back(tauGenCand[i]);
+	       //std::cout<<"    "<<i<<" . taus "<<mcPID->at(tauGenCand[i])<<endl;
+	     }
+	   //std::cout<<"tau Index = " <<mcIndex->at(tauGenCand[0])<<" tauSize="<<tauGenCand.size()<< " mother = "<<mcMotherPID->at(tauGenCand[0])<< endl;
+	   if(tauNeuGenCand.size()>0)
+	     {
+	       for(int i=0; i<tauNeuGenCand.size(); i++)
+		 {
+		   if(mcMotherPID->at(tauNeuGenCand[i])==  15) index_nu1.push_back(tauNeuGenCand[i]);
+                   if(mcMotherPID->at(tauNeuGenCand[i])== -15) index_nu2.push_back(tauNeuGenCand[i]);
+		 }
+	     }
+	   if(eleGenCand.size()>0)
+	     {
+	       for (int i=0; i<eleGenCand.size(); i++)
+		 {
+		   //std::cout<<"        "<<i<<" . e_mom "<<mcMotherPID->at(eleGenCand[i])<<endl;
+		   if( mcMotherPID->at(eleGenCand[i])==  15 ) index_e1.push_back(eleGenCand[i]);
+		   if( mcMotherPID->at(eleGenCand[i])== -15 ) index_e2.push_back(eleGenCand[i]);
+		 }
+	     }
+	   if( muGenCand.size()>0)
+	     {
+	       for (int i=0; i<muGenCand.size(); i++)
+		 {
+		   // std::cout<<"        "<<i<<" . mu_mom "<<mcMotherPID->at(muGenCand[i])<<endl;
+		   if( mcMotherPID->at(muGenCand[i])==  15 ) index_m1.push_back(muGenCand[i]);
+		   if( mcMotherPID->at(muGenCand[i])== -15 ) index_m2.push_back(muGenCand[i]);
+		 }
+	     }
+	   
+	   bool found_t1=false; bool found_t2=false; 
+	   bool found_m1=false; bool found_m2=false; 
+	   bool found_e1=false; bool found_e2=false;
+	   bool tauMtauE=false; bool tauMtauM=false; bool tauMtauh=false; bool tauhtauM=false;
+	   
+	   if(index_m1.size()>0)
+	     {
+	       found_m1=true;
+	       if(index_e2.size()>0) { found_e2=true;  tauMtauE=true; }
+	       else if (index_e1.size()>0) continue;
+	       else if (index_m2.size()>0) tauMtauM=true;
+	       else if(mcCharge->at(index_m1[0])*mcCharge->at(index_t2[0])<0) tauMtauh=true;
+	       
+	     }
+	   if(index_m2.size()>0)
+             {
+	       found_m2=true;
+               if (index_e1.size()>0) { found_e1=true; tauMtauE=true; }
+	       else if (index_m1.size()>0) tauMtauM=true;
+	       else if (index_e2.size()>0) continue;
+	       else if(mcCharge->at(index_m2[0])*mcCharge->at(index_t1[0])<0)tauhtauM=true;
+             }
+	   
+	   found_mt++;
+	   if(!((tauMtauh==true || tauhtauM==true) && tauMtauM==false)) continue;
+	   nHToMuTau++;
+	   int tauh_index=-1; int tauNu_index=-1;
+	   if(tauMtauh==true) { tauh_index=index_t2[0]; tauNu_index=index_nu2[0]; }
+	   if(tauhtauM==true) { tauh_index=index_t1[0]; tauNu_index=index_nu1[0]; }
+	   
+	   myTau.SetPtEtaPhiE(mcPt->at(tauh_index), mcEta->at(tauh_index), mcPhi ->at(tauh_index), mcE->at(tauh_index));
+	   myNeu.SetPtEtaPhiE(mcPt->at(tauNu_index), mcEta->at(tauNu_index), mcPhi ->at(tauNu_index), mcE->at(tauNu_index));		    
+	   myTauh = myTau - myNeu;
+	   
+	   h_Hpt_gen->Fill(mcPt->at(higgsCand[0]), event_weight);
+	   h_visMass_gen->Fill(mcMass->at(higgsCand[0]), event_weight);
+	   h_mu_pt ->Fill( mcPt->at(muGenCand[0]), event_weight);
+	   h_mu_phi->Fill(mcPhi->at(muGenCand[0]), event_weight);
+	   h_mu_eta->Fill(mcEta->at(muGenCand[0]), event_weight);
+	   h_tau_pt ->Fill( myTauh.Pt(), event_weight);
+	   h_tau_phi->Fill( myTauh.Phi(), event_weight);
+	   h_tau_eta->Fill( myTauh.Eta(), event_weight);
+	 }
+     
+       
+       muCand = getMuCand(20,2.4); tauCand = getTauCand(30,2.3);
+       if(metFilters==0)
 	    {
 	      fabs(genWeight) > 0.0 ? event_weight *= genWeight/fabs(genWeight) : event_weight = 0;
 	      nMETFiltersPassed+=event_weight;
@@ -446,62 +496,45 @@ std::vector<int> Analyzer_mutau_study::found_higgs(){
   std::vector<int> tmpCand;    tmpCand.clear();   
   bool found_H=false;
   for(int i=0; i<nMC;i++){
-    if (fabs((*mcPID)[i])==25)found_H=true;    
-    if (found_H==true)
-      {
+    if (fabs(mcPID->at(i))==25)
 	tmpCand.push_back(i);
-	//std::cout<<"higgs in : "<<i<<endl;
-      }
   }
-  //std::cout<<"next .... "<<endl;
   return tmpCand; 
 }
 std::vector<int> Analyzer_mutau_study::found_daughter(){
   std::vector<int> tmpCand;    tmpCand.clear();
-  bool found_d=false;
   for(int i=0; i<mcDaughterPID->size();i++){
-    if (fabs((*mcDaughterPID)[i])==13 || fabs((*mcDaughterPID)[i])<=6 ||  fabs((*mcDaughterPID)[i])>100 )found_d=true;
-    if (found_d==true) tmpCand.push_back(i); 
+    if (fabs(mcDaughterPID->at(i))==13 || fabs(mcDaughterPID->at(i))<=6 ||  fabs(mcDaughterPID->at(i))>100 ) tmpCand.push_back(i); 
   }
   return tmpCand;
 }
 std::vector<int> Analyzer_mutau_study::found_mother(){
   std::vector<int> tmpCand;    tmpCand.clear();
-  bool found_m=false;
   for(int i=0; i<mcMotherPID->size();i++){
-    if (fabs((*mcMotherPID)[i])==15)found_m=true;
-    if (found_m==true) tmpCand.push_back(i);
+    if (fabs(mcMotherPID->at(i))==15)tmpCand.push_back(i);
   }
   return tmpCand;
 }
 
 std::vector<int> Analyzer_mutau_study::found_muon(){
   std::vector<int> tmpCand;    tmpCand.clear();
-  bool found_M=false;
   for(int i=0; i<nMC;i++){
-    if (fabs((*mcPID)[i])==13 && mcStatus->at(i)==1 )found_M=true;
-    
-    if (found_M==true)tmpCand.push_back(i);
+    if (fabs(mcPID->at(i))==13  )tmpCand.push_back(i); ///&& mcStatus->at(i)==1 
   }
   return tmpCand;
 }
 std::vector<int> Analyzer_mutau_study::found_electron(){
   std::vector<int> tmpCand;    tmpCand.clear();
-  bool found_E=false;
   for(int i=0; i<nMC;i++){
-    if (fabs((*mcPID)[i])==11 && mcStatus->at(i)==1)found_E=true;
-    if (found_E==true)tmpCand.push_back(i);
+    if (fabs(mcPID->at(i))==11 )tmpCand.push_back(i); ///&& mcStatus->at(i)==1
   }
   return tmpCand;
 }
 
 std::vector<int> Analyzer_mutau_study::found_tau(){
   std::vector<int> tmpCand;    tmpCand.clear(); 
-  bool found_T=false;
-  bool found_d=false;
   for(int i=0; i<nMC;i++){
-    if ( fabs((*mcPID)[i]) ==15 ) found_T=true;
-    if (found_T==true  )tmpCand.push_back(i);
+    if ( fabs(mcPID->at(i)) ==15 )tmpCand.push_back(i);
   }
   return tmpCand;
 }
@@ -510,7 +543,7 @@ std::vector<int> Analyzer_mutau_study::found_tauh(){
   bool found_T=false;
   bool found_d=false;
   for(int i=0; i<nMC;i++){
-    if ( fabs((*mcPID)[i])==15  ) found_T=true;
+    if ( fabs(mcPID->at(i))==15  ) found_T=true;
     if ( mcTauDecayMode->at(i)>>2&1==1 || mcTauDecayMode->at(i)>>3&1==1 || mcTauDecayMode->at(i)>>4&1==1 || mcTauDecayMode->at(i)>>5&1==1
 	 || mcTauDecayMode->at(i)>>6&1==1 || mcTauDecayMode->at(i)>>7&1==1 || mcTauDecayMode->at(i)>>8&1==1 
 	 || mcTauDecayMode->at(i)>>9&1==1 || mcTauDecayMode->at(i)>>10&1==1 || mcTauDecayMode->at(i)>>11&1==1) found_d=true;
@@ -521,11 +554,8 @@ std::vector<int> Analyzer_mutau_study::found_tauh(){
 
 std::vector<int> Analyzer_mutau_study::found_tauNeu(){
   std::vector<int> tmpCand;    tmpCand.clear();
-  bool found_Tnu=false;
   for(int i=0; i<nMC;i++){
-    if (fabs((*mcPID)[i])==16)found_Tnu=true;
-
-    if (found_Tnu==true)tmpCand.push_back(i);
+    if (fabs(mcPID->at(i))==16)tmpCand.push_back(i);
   }
   return tmpCand;
 }
