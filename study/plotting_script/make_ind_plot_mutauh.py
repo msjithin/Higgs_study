@@ -314,10 +314,11 @@ if histoname=='cutflow':
 
 if histoname=='cutflow_n':
   Histo_gen.GetXaxis().SetLabelOffset(0.01)
-  Histo_gen.GetXaxis().SetBinLabel( 8,"#tau fake ejection");
-  Histo_gen.GetXaxis().SetBinLabel( 7,"deltaR");
-  Histo_gen.GetXaxis().SetBinLabel( 6,"bjetVeto");
-  Histo_gen.GetXaxis().SetBinLabel( 5,"ThirdLepVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 9,"#tau fake ejection");
+  Histo_gen.GetXaxis().SetBinLabel( 8,"deltaR");
+  Histo_gen.GetXaxis().SetBinLabel( 7,"bjetVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 6,"ThirdLepVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 5,"opposite charge");
   Histo_gen.GetXaxis().SetBinLabel( 4,"Tau selection");
   Histo_gen.GetXaxis().SetBinLabel( 3,"Muon selection");
   Histo_gen.GetXaxis().SetBinLabel( 2,"Trigger");

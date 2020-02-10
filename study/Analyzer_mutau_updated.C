@@ -496,7 +496,9 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 		 {
 		   plotFill("nMu_4",  nMu ,  5 , 0 , 5);
 		   plotFill("nTau_4", nTau , 5 , 0 , 5);
-		   for (int iMu=0; iMu<muCand.size(); iMu++)
+		   plotFill("muCand_4",  reco_mu.size() ,  5 , 0 , 5);
+		   plotFill("tauCand_4",  reco_tau.size() ,  5 , 0 , 5);
+		   for (int iMu=0; iMu<reco_mu.size(); iMu++)
 		     {
 		       plotFill("muPt_4",  muPt->at(iMu) , 40 , 0 , 200);
 		       plotFill("muEta_4", muEta->at(iMu), 30, -6, 6);
@@ -507,7 +509,7 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 		       plotFill("relMuIso_4", relMuIso, 10, 0, 0.5);
 		       plotFill("muCharge_4", muCharge->at(iMu), 8, -2, 2 );
 		     }
-		   for (int iTau=0; iTau<tauCand.size(); iTau++)
+		   for (int iTau=0; iTau<reco_tau.size(); iTau++)
 		     {
 		       plotFill("tauPt_4",  tau_Pt->at(iTau) , 40 , 0 , 200);
 		       plotFill("tauEta_4", tau_Eta->at(iTau), 30, -6, 6);
