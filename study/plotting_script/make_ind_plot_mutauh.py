@@ -15,6 +15,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-name",
                     help="name of hist to be plotted")
 
+parser.add_argument("-in", "--inputFile",
+                    help="name of input file")
+
 parser.add_argument("-xaxis",
                     help="x axis label")
 
@@ -36,12 +39,13 @@ parser.add_argument("-ch", "--channel",
 now = datetime.datetime.now()
 args =  parser.parse_args()
 histoname=args.name
+inputFile_=args.inputFile
 category_=args.category
 xaxis_label=args.xaxis
 channel_=args.channel
 
-print "Item / histogram name = ", histoname
-print "histo 1               = ", histoname+"_"+category_
+#print "Item / histogram name = ", histoname
+#print "histo 1               = ", histoname+"_"+category_
 #print "histo 2               = ", histoname+"_"+category_
 
 if (args.logYaxis):
@@ -50,6 +54,8 @@ else :
   yaxisLog = 0
 
 if (args.noLegend):
+  noLegend = 1
+elif (histoname =="muPt_Hpt_2D" or histoname =="muPt_Hpt_2D_highPt"):
   noLegend = 1
 else :
   noLegend = 0
@@ -68,7 +74,7 @@ def add_lumi():
     lumi.SetFillStyle(    0 )
     lumi.SetTextAlign(   32 )#12
     lumi.SetTextColor(    1 )
-    lumi.SetTextSize(0.05)
+    lumi.SetTextSize(0.035)
     lumi.SetTextFont (   42 )
     if channel_=="combined":
       lumi.AddText("4 channels combined 2018, 100 fb^{-1} (13 TeV)")
@@ -95,6 +101,34 @@ def add_CMS():
     lumi.AddText("CMS")
     return lumi
 
+def add_text_des(desctription, cat_select):
+    lowX=0.50
+    lowY=0.60
+    lumi  = ROOT.TPaveText(lowX, lowY, lowX+0.40, lowY+0.2, "NDC")
+    lumi.SetTextFont(42)
+    lumi.SetTextSize(0.035)
+    lumi.SetBorderSize(   0 )
+    lumi.SetFillStyle(    0 )
+    lumi.SetTextAlign(   12 )
+    lumi.SetTextColor(    1 )
+    pt_select=''
+    if (cat_select=='1') : 
+      pt_select='0 <'+desctription+'<100'
+    if (cat_select=='2') :
+      pt_select='100 <'+desctription+'<200'
+    if (cat_select=='3') :
+      pt_select='200 <'+desctription+'<300'
+    if (cat_select=='4') :
+      pt_select='300 <'+desctription+'<400'
+    if (cat_select=='5') :
+      pt_select='400 <'+desctription+'<500'
+    if (cat_select=='6') :
+      pt_select='500 <'+desctription+'<600'
+    if (cat_select=='7') :
+      pt_select='600 <'+desctription+'<1000'
+    lumi.AddText(pt_select)
+    return lumi
+
 def add_Preliminary():
     lowX=0.21
     lowY=0.63
@@ -110,7 +144,7 @@ def add_Preliminary():
     return lumi
 
 def make_legend():
-        output = ROOT.TLegend(0.75, 0.65, 0.92, 0.84, "", "brNDC")
+        output = ROOT.TLegend(0.5, 0.75, 0.65, 0.84, "", "brNDC")
         #output = ROOT.TLegend(0.2, 0.1, 0.47, 0.65, "", "brNDC")
         output.SetLineWidth(1)
         output.SetLineStyle(1)
@@ -119,107 +153,132 @@ def make_legend():
         output.SetTextFont(42)
         return output
 
-ROOT.gStyle.SetFrameLineWidth(1)
-ROOT.gStyle.SetLineWidth(2)
+#ROOT.gStyle.SetFrameLineWidth(1)
+#ROOT.gStyle.SetLineWidth(2)
 ROOT.gStyle.SetOptStat()
+if histoname =="cutflow":
+  ROOT.gStyle.SetOptStat(0)
+if histoname =="cutflow_n":
+  ROOT.gStyle.SetOptStat(0)
+if histoname =="muPt_Hpt_2D" or histoname =="muPt_Hpt_2D_highPt":
+  ROOT.gStyle.SetOptStat(0)
 
 c=ROOT.TCanvas("canvas","",0,0,1200,1200)
 c.cd()
 
 if channel_=="mutau":
-  OutFile=ROOT.TFile("../study_mutau_110k.root","r")
+  OutFile=ROOT.TFile(inputFile_,"r")
 if channel_=="etau":
-  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile(inputFile_,"r") 
 if channel_=="tautau":
-  OutFile=ROOT.TFile("../study_mutau_110k.root","r")
+  OutFile=ROOT.TFile(inputFile_,"r")
 if channel_=="emu":
-  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile(inputFile_,"r") 
 if channel_=="combined":
-  OutFile=ROOT.TFile("../study_mutau_110k.root","r") 
+  OutFile=ROOT.TFile(inputFile_,"r") 
 
 #OutFile_1=ROOT.TFile("ggh_aw_mutau.root","r")
 
-adapt=ROOT.gROOT.GetColor(12)
-new_idx=ROOT.gROOT.GetListOfColors().GetSize() + 1
-trans=ROOT.TColor(new_idx, adapt.GetRed(), adapt.GetGreen(),adapt.GetBlue(), "",0.5)
+#adapt=ROOT.gROOT.GetColor(12)
+#new_idx=ROOT.gROOT.GetListOfColors().GetSize() + 1
+#trans=ROOT.TColor(new_idx, adapt.GetRed(), adapt.GetGreen(),adapt.GetBlue(), "",0.5)
 
-#Histo_org=OutFile_1.Get(histoname+"_gen_org")
+Histo_org=OutFile.Get("Higgs_pt_gen_org")
+Histo_ref=OutFile.Get("Higgs_pt_gen")
 Histo_gen=OutFile.Get(histoname+"_"+category_)
+if histoname=='cutflow' or histoname=='cutflow_n' or histoname=='muPt_Hpt_2D' or histoname=='muPt_Hpt_2D_highPt' :
+  Histo_gen=OutFile.Get(histoname)
+ngen=OutFile.Get("nEvents").GetBinContent(1)
+luminosity = 100000.0
+xs = 44.14*0.0627
+weight=luminosity*xs/ngen
+print "weight = ", weight
+Histo_gen.Scale(weight)
+Histo_org.Scale(weight)
+Histo_ref.Scale(weight)
+line_y_value=Histo_ref.Integral()
+line_y_value_org=Histo_org.Integral()
+myline=ROOT.TLine(0,line_y_value,11,line_y_value )
+myline_org=ROOT.TLine(0,line_y_value_org,11,line_y_value_org )
+myline.SetLineColor(4)
+myline.SetLineWidth(4)
+myline_org.SetLineColor(2)
+myline_org.SetLineWidth(2)
 #Histo_rec=OutFile.Get(histoname+"_"+category_)
 #Histo_org.SetLineColor(1)
+Histo_gen.SetMarkerStyle(20)
+Histo_gen.SetMarkerSize(1.0)
+Histo_gen.SetMarkerColor(4)
 Histo_gen.SetLineColor(4)
+if histoname=='cutflow' or histoname=='cutflow_n':
+  Histo_gen.SetLineColor(46)
+  Histo_gen.SetFillColor(46)
+  Histo_gen.SetMarkerColor(46)
 #Histo_rec.SetLineColor(2)
-
-Histo_gen.GetXaxis().SetTitle("")
-Histo_gen.GetXaxis().SetTitleSize(0)
-
+Histo_gen.SetTitle("")
 if piAxis == 1:
   Histo_gen.GetXaxis().SetNdivisions(-405)
 elif histoname=='Events_level_':
   Histo_gen.GetXaxis().SetNdivisions(-115)
+elif (histoname=='mu_Charge' or histoname=='tau_Charge'):
+  Histo_gen.GetXaxis().SetNdivisions(-104)
+elif (histoname=='muCharge' or histoname=='tauCharge'):
+  Histo_gen.GetXaxis().SetNdivisions(-108)
 else :
   Histo_gen.GetXaxis().SetNdivisions(-405)
 
-Histo_gen.GetXaxis().SetLabelSize(0)
-Histo_gen.GetYaxis().SetLabelFont(42)
-Histo_gen.GetYaxis().SetLabelOffset(0.01)
-Histo_gen.GetYaxis().SetLabelSize(0.04)
-Histo_gen.GetYaxis().SetTitleSize(0.075)
-Histo_gen.GetYaxis().SetTitleOffset(1.04)
-Histo_gen.SetTitle("")
-Histo_gen.GetYaxis().SetTitle("Events")
-Histo_gen.GetYaxis().SetTitle("")
-
-pad1 = ROOT.TPad("pad1","pad1",0,0.35,1,1)
+pad1 = ROOT.TPad("pad1","pad1",0,0.0,1,1)
 pad1.Draw()
 pad1.cd()
 pad1.SetFillColor(0)
-pad1.SetBorderMode(0)
-pad1.SetBorderSize(1)
+pad1.SetBorderMode(1)
+pad1.SetBorderSize(2)
 pad1.SetTickx(1)
 pad1.SetTicky(1)
 pad1.SetGridx()
 pad1.SetLeftMargin(0.18)
 pad1.SetRightMargin(0.05)
+if histoname =="muPt_Hpt_2D" or histoname =="muPt_Hpt_2D_highPt":
+  pad1.SetRightMargin(0.18)
 pad1.SetTopMargin(0.122)
-pad1.SetBottomMargin(0.026)
+if histoname== "cutflow" or histoname=='cutflow_n':
+  pad1.SetBottomMargin(0.25)
+else:
+  pad1.SetBottomMargin(0.122)
 pad1.SetFrameFillStyle(0)
 pad1.SetFrameLineStyle(0)
-pad1.SetFrameLineWidth(1)
-pad1.SetFrameBorderMode(0)
-pad1.SetFrameBorderSize(1)
+pad1.SetFrameLineWidth(3)
+pad1.SetFrameBorderMode(1)
+pad1.SetFrameBorderSize(2)
 if yaxisLog == 1 :
   pad1.SetLogy()  
 
-#for k in range(1,Data.GetSize()-1):
-    #s=ZH125.GetBinContent(k)
-    ##b=VV.GetBinContent(k)+Fake.GetBinContent(k)
-    #b=VV.GetBinContent(k)+ggH125.GetBinContent(k)+W.GetBinContent(k)
-    #if (b<0):
-	#b=0.000001
-    #if (s/(0.00001+0.05*s+b)**0.5 > 0.8):
-	#Data.SetBinContent(k,-1)
-	#Data.SetBinError(k,-1)
-Histo_gen.SetMarkerStyle(20)
-#Histo_rec.SetMarkerStyle(20)
-#Histo_org.SetMarkerStyle(29)
-
-Histo_gen.SetMarkerSize(1.0)
-#Histo_rec.SetMarkerSize(1.0)
-Histo_gen.SetMarkerColor(4)
-#Histo_rec.SetMarkerColor(2)
-#Histo_org.SetMarkerColor(1)
-
-Histo_gen.GetXaxis().SetTitle("")
+Histo_gen.GetXaxis().SetLabelSize(0.04)
+Histo_gen.GetYaxis().SetLabelFont(42)
+Histo_gen.GetYaxis().SetLabelOffset(0.01)
+Histo_gen.GetYaxis().SetLabelSize(0.04)
+Histo_gen.GetYaxis().SetTitleSize(0.04)
+Histo_gen.GetYaxis().SetTitleOffset(2.0)
+Histo_gen.SetTitle("")
 Histo_gen.GetYaxis().SetTitle("Events")
+if( histoname=='muPt_Hpt_2D' or histoname=='muPt_Hpt_2D_highPt'):
+  Histo_gen.GetYaxis().SetTitle("Higgs pt [GeV]")
+if( histoname=='Hpt_muPt_2D'):                                                                                 
+  Histo_gen.GetYaxis().SetTitle("mu pt [GeV]")    
+Histo_gen.GetXaxis().SetTitle(xaxis_label)
+
 if yaxisLog == 1 :
   Histo_gen.SetMaximum(10*Histo_gen.GetMaximum())
-  Histo_gen.SetMinimum(0.01)
+  if histoname== "cutflow" or histoname=='cutflow_n': 
+    Histo_gen.SetMinimum(100)
+  else :
+    Histo_gen.SetMinimum(0.01)
+
 else :
   Histo_gen.SetMaximum(1.35*Histo_gen.GetMaximum())
   Histo_gen.SetMinimum(0.0)
 #stack.SetLineColor(9)
-Histo_gen.Draw()
+#Histo_gen.Draw()
 #Histo_rec.Draw("e1same")
 #Histo_org.Draw("e1same")
 
@@ -228,159 +287,79 @@ Histo_gen.Draw()
 
 #Histo_gen.Draw("e1same")
 #errorBand.Draw("e2same")
+if histoname=='cutflow':
+  Histo_gen.GetXaxis().SetLabelOffset(0.01)
+  Histo_gen.GetXaxis().SetBinLabel(11,"#tau fake ejection");
+  Histo_gen.GetXaxis().SetBinLabel(10,"deltaR");
+  Histo_gen.GetXaxis().SetBinLabel( 9,"bjetVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 8,"ThirdLepVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 7,"MuTau charge");
+  Histo_gen.GetXaxis().SetBinLabel( 6,"TauDecayMode");
+  Histo_gen.GetXaxis().SetBinLabel( 5,"TauIso");
+  #Histo_gen.GetXaxis().SetBinLabel( 8,"MuonIso");
+  #Histo_gen.GetXaxis().SetBinLabel( 7,"MuonId");
+  #Histo_gen.GetXaxis().SetBinLabel( 6,"MuonD0");
+  #Histo_gen.GetXaxis().SetBinLabel( 5,"MuonDz");
+  Histo_gen.GetXaxis().SetBinLabel( 4,"Tau selection");
+  Histo_gen.GetXaxis().SetBinLabel( 3,"Muon selection");
+  Histo_gen.GetXaxis().SetBinLabel( 2,"Trigger");
+  Histo_gen.GetXaxis().SetBinLabel( 1,"Initial");
+  Histo_gen.GetXaxis().SetNdivisions(-115)
+  Histo_gen.GetXaxis().LabelsOption("v")
+  Histo_gen.GetXaxis().SetTitle(" cut flow")
+  Histo_gen.GetXaxis().SetTitleOffset(4)
+  #  Histo_gen.SetMaximum(1.2)#FIXME(1.2)
+  #  Histo_gen.SetMinimum(0.8)#FIXME(0.8)
 
+
+if histoname=='cutflow_n':
+  Histo_gen.GetXaxis().SetLabelOffset(0.01)
+  Histo_gen.GetXaxis().SetBinLabel( 8,"#tau fake ejection");
+  Histo_gen.GetXaxis().SetBinLabel( 7,"deltaR");
+  Histo_gen.GetXaxis().SetBinLabel( 6,"bjetVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 5,"ThirdLepVeto");
+  Histo_gen.GetXaxis().SetBinLabel( 4,"Tau selection");
+  Histo_gen.GetXaxis().SetBinLabel( 3,"Muon selection");
+  Histo_gen.GetXaxis().SetBinLabel( 2,"Trigger");
+  Histo_gen.GetXaxis().SetBinLabel( 1,"Initial");
+  Histo_gen.GetXaxis().SetNdivisions(-115)
+  Histo_gen.GetXaxis().LabelsOption("v")
+  Histo_gen.GetXaxis().SetTitle(" cut flow")
+  Histo_gen.GetXaxis().SetTitleOffset(4)
+  #  Histo_gen.SetMaximum(1.2)#FIXME(1.2)
+  #  Histo_gen.SetMinimum(0.8)#FIXME(0.8)
+
+
+if (histoname=='muPt_Hpt_2D' or histoname=='muPt_Hpt_2D_highPt'):
+  Histo_gen.Draw("COLZ")
+else:
+  Histo_gen.Draw()
+#if histoname=='cutflow':
+#  myline.Draw()
+#  myline_org.Draw()
 legende=make_legend()
-legende.AddEntry(Histo_gen,"gen","elp")
+if histoname=="cutflow" or histoname=='cutflow_n':
+  legende.AddEntry(Histo_gen,"reco","f")
+else :
+  legende.AddEntry(Histo_gen,"gen","elp")
+
 #legende.AddEntry(Histo_rec,"reco","elp")
 
-if noLegend == 0:
+if noLegend == 0 :
   legende.Draw()
 
 l1=add_lumi()
 l1.Draw("same")
 l2=add_CMS()
-l2.Draw("same")
+#l2.Draw("same")
 l3=add_Preliminary()
-l3.Draw("same")
-
-pad1.RedrawAxis()
-#print "Line 217 is okay"
-categ  = ROOT.TPaveText(0.21, 0.5+0.013, 0.43, 0.70+0.155, "NDC")
-categ.SetBorderSize(   0 )
-categ.SetFillStyle(    0 )
-categ.SetTextAlign(   12 )
-categ.SetTextSize ( 0.06 )
-categ.SetTextColor(    1 )
-categ.SetTextFont (   42 )
-
+#l3.Draw("same")
+l4=add_text_des('Higgs pt', category_)
+if histoname=="muPt_Hpt" or histoname=="muEta_Hpt" :
+  l4.Draw("same")
+#pad1.RedrawAxis()
 
 c.cd()
-pad2 = ROOT.TPad("pad2","pad2",0,0,1,0.35);
-pad2.SetTopMargin(0.05);
-pad2.SetBottomMargin(0.35);
-pad2.SetLeftMargin(0.18);
-pad2.SetRightMargin(0.05);
-pad2.SetTickx(1)
-pad2.SetTicky(1)
-pad2.SetFrameLineWidth(1)
-#pad2.SetGridx()
-pad2.SetGridy()
-#pad2.SetLogy()
-pad2.Draw()
-pad2.cd()
-h1=Histo_gen.Clone()
-h3=Histo_gen.Clone()
-#h1.SetMaximum(2.0)#FIXME(1.5)
-#h1.SetMinimum(0.0)#FIXME(0.5)
-h1.SetMarkerStyle(20)
-h1.SetMarkerSize(1.0)
-#h3.Sumw2()
-#h1.Sumw2()
-h1.SetStats(0)
-h1.Divide(h3)
-h1.GetXaxis().SetTitle(histoname)#(#vec{p_{T}}(#tau_{1})+#vec{p_{T}}(#tau_{2}))/(p_{T}(#tau_{1})+p_{T}(#tau_{2}))")#("m_{vis} (GeV)")#(#vec{p_{T}(#mu)}+#vec{p_{T}(#tau)})/(p_{T}(#mu)+p_{T}(#tau))")
-#if (i+1==1 or i+1==2 or i+1==7 or i+1==8):
-#	h1.GetXaxis().SetTitle("Electron p_{T} (GeV)")
-#if (i+1==4 or i+1==10):
-#     h1.GetXaxis().SetTitle("Muon p_{T} (GeV)")
-#if (i+1==6 or i+1==12 or i+1==3 or i+1==5 or i+1==9 or i+1==11):
-#     h1.GetXaxis().SetTitle("Tau p_{T} (GeV)")
-h1.SetMarkerColor(1)
-h1.SetLineColor(1)
-h1.SetTitle("")
-h1.GetXaxis().SetLabelSize(0.1)
-h1.GetYaxis().SetTitle("ratio")
-h1.GetYaxis().SetLabelSize(0.08)
-if ( h1.GetMaximum() > 0.15):
-  h1.SetMaximum(0.5)
-else :
-  h1.SetMaximum(0.15)
-
-print "ratio maximum = " , h1.GetMaximum()
-h1.SetMinimum(0.0)#FIXME(0.5)
-if piAxis ==1 :
-  if firstarg == "Tau_phi_" or firstarg == "Muon_phi_" :
-    h1.GetXaxis().SetBinLabel(21,"#pi");
-    h1.GetXaxis().SetBinLabel(16,"#frac{#pi}{2}");
-    h1.GetXaxis().SetBinLabel(11,"0");
-    h1.GetXaxis().SetBinLabel(6,"#frac{-#pi}{2}");
-    h1.GetXaxis().SetBinLabel(1,"-#pi");
-  else :
-    h1.GetXaxis().SetBinLabel(20,"#pi");
-    h1.GetXaxis().SetBinLabel(15,"#frac{3#pi}{4}");
-    h1.GetXaxis().SetBinLabel(10,"#frac{#pi}{2}");
-    h1.GetXaxis().SetBinLabel(5,"#frac{#pi}{4}");
-    h1.GetXaxis().SetBinLabel(1,"0");
-
-if piAxis == 1:
-  h1.GetXaxis().SetLabelOffset(0.01)
-  h1.GetXaxis().SetLabelSize(0.15)
-  h1.GetXaxis().SetNdivisions(-405)
-
-elif histoname=='Events_level_':
-  
-  h1.GetXaxis().SetBinLabel(13,"METcut");
-  h1.GetXaxis().SetBinLabel(12,"VisibleMass");
-  h1.GetXaxis().SetBinLabel(11,"HiggsPt");
-  h1.GetXaxis().SetBinLabel(10,"Mt cut");
-  h1.GetXaxis().SetBinLabel(9,"BjetVeto");
-  h1.GetXaxis().SetBinLabel(8,"ThirdLepVeto");
-  h1.GetXaxis().SetBinLabel(7,"DeltaR");
-  h1.GetXaxis().SetBinLabel(6,"opp. charge");
-  h1.GetXaxis().SetBinLabel(5,"GoodTau");
-  h1.GetXaxis().SetBinLabel(4,"GoodMuon");
-  h1.GetXaxis().SetBinLabel(3,"mu Trg");
-  h1.GetXaxis().SetBinLabel(2,"MET Filters");
-  h1.GetXaxis().SetBinLabel(1,"No cuts");
-  h1.GetXaxis().SetNdivisions(-115)
-  h1.GetXaxis().LabelsOption("v")
-  h1.GetXaxis().SetTitle(" cut flow")
-  h1.SetMaximum(1.2)#FIXME(1.2)
-  h1.SetMinimum(0.8)#FIXME(0.8)
-
-elif histoname=='Cutflow_':
-
-  h1.GetXaxis().SetBinLabel(6,"BjetVeto");
-  h1.GetXaxis().SetBinLabel(5,"ThirdLepVeto");
-  h1.GetXaxis().SetBinLabel(4,"DeltaR");
-  h1.GetXaxis().SetBinLabel(3,"opp. charge");
-  h1.GetXaxis().SetBinLabel(2,"GoodTau");
-  h1.GetXaxis().SetBinLabel(1,"GoodMu");
-  h1.GetXaxis().SetNdivisions(-115)
-  h1.GetXaxis().LabelsOption("v")
-  h1.GetXaxis().SetTitle(" cut flow")
-  h1.SetMaximum(1.2)#FIXME(1.2)
-  h1.SetMinimum(0.8)#FIXME(0.8)
-
-else :
-  h1.GetXaxis().SetNdivisions(-405)
-
-  
-h1.GetYaxis().SetNdivisions(5)
-h1.GetXaxis().SetTitleFont(42)
-h1.GetYaxis().SetTitleFont(42)
-
-
-h1.GetXaxis().SetTitleSize(0.15)
-h1.GetYaxis().SetTitleSize(0.15)
-h1.GetYaxis().SetTitleOffset(0.56)
-h1.GetXaxis().SetTitleOffset(1.1)
-
-
-
-
-
-
-h1.Draw("e0p")
-#h3.Draw("e2same")
-
-c.cd()
-#  pad1.Draw()
-
-ROOT.gPad.RedrawAxis()
-
-c.Modified()
-#c.SaveAs("plots/"+firstarg+"_fr.pdf")
-c.SaveAs("plot_"+histoname+"_"+category_+".png")
-
-
+#ROOT.gPad.RedrawAxis()
+c.Modified() 
+c.SaveAs("plot_"+histoname+"_"+category_+".png") 

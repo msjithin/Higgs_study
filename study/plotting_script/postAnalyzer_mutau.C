@@ -229,23 +229,39 @@ int main(int argc, char** argv)
   TH1F* histo_HiggsPt_4 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_4"))->Clone();
   TH1F* histo_HiggsPt_5 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_5"))->Clone();
   TH1F* histo_HiggsPt_6 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_6"))->Clone();
-
-  //Double_t  Pt_Bins[36]={0.0, 10,  20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 450, 500, 600, 800, 1000};
-  Double_t  Pt_Bins[26]={0.0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 450, 500, 600, 800, 1000};
-
+  TH1F* histo_HiggsPt_7 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_7"))->Clone();
+  TH1F* histo_HiggsPt_8  = (TH1F*)((TH1F*)f_input->Get("HiggsPt_8"))->Clone();
+  TH1F* histo_HiggsPt_9  = (TH1F*)((TH1F*)f_input->Get("HiggsPt_9"))->Clone();
+  TH1F* histo_HiggsPt_10 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_10"))->Clone();
+  TH1F* histo_HiggsPt_11 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_11"))->Clone();
+  TH1F* histo_HiggsPt_12 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_12"))->Clone();
+  TH1F* histo_HiggsPt_15 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_15"))->Clone();
+  TH1F* histo_HiggsPt_16 = (TH1F*)((TH1F*)f_input->Get("HiggsPt_16"))->Clone();
+  
+  //Double_t  Pt_Bins[26]={0.0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 450, 500, 600, 800, 1000};
+  Double_t  Pt_Bins[16]={0.0, 40, 80, 120, 160, 200, 240, 280, 320,  360, 400, 450, 500, 600, 800, 1000};
+  int nBins_pt=15;
   //TH1F* h_Hpt_gen=histo_Hpt_gen->Rebin(35, Pt_Bins);
   //h_Hpt_gen->Scale(net_weight);
-  TH1F *h_Hpt_gen_org = (TH1F*)histo_Hpt_gen->Rebin(25,"Higgs_pt_gen_org", Pt_Bins);  
-  TH1F *h_Hpt_gen   = (TH1F*)histo_Hpt_gen->Rebin(25,"Higgs_pt_gen", Pt_Bins);
-  TH1F *h_HiggsPt_0 = (TH1F*)histo_HiggsPt_0->Rebin(25,"Higgs_pt_0", Pt_Bins);
-  TH1F *h_HiggsPt_1 = (TH1F*)histo_HiggsPt_1->Rebin(25,"Higgs_pt_1", Pt_Bins);
-  TH1F *h_HiggsPt_2 = (TH1F*)histo_HiggsPt_2->Rebin(25,"Higgs_pt_2", Pt_Bins);
-  TH1F *h_HiggsPt_3 = (TH1F*)histo_HiggsPt_3->Rebin(25,"Higgs_pt_3", Pt_Bins);
-  TH1F *h_HiggsPt_4 = (TH1F*)histo_HiggsPt_4->Rebin(25,"Higgs_pt_4", Pt_Bins);
-  TH1F *h_HiggsPt_5 = (TH1F*)histo_HiggsPt_5->Rebin(25,"Higgs_pt_5", Pt_Bins);
-  TH1F *h_HiggsPt_6 = (TH1F*)histo_HiggsPt_6->Rebin(25,"Higgs_pt_6", Pt_Bins);
+  TH1F *h_Hpt_gen_org = (TH1F*)histo_Hpt_gen->Rebin(nBins_pt,"Higgs_pt_gen_org", Pt_Bins);  
+  TH1F *h_Hpt_gen   = (TH1F*)histo_Hpt_gen->Rebin(nBins_pt,"Higgs_pt_gen", Pt_Bins);
+  TH1F *h_HiggsPt_0 = (TH1F*)histo_HiggsPt_0->Rebin(nBins_pt,"Higgs_pt_0", Pt_Bins);
+  TH1F *h_HiggsPt_1 = (TH1F*)histo_HiggsPt_1->Rebin(nBins_pt,"Higgs_pt_1", Pt_Bins);
+  TH1F *h_HiggsPt_2 = (TH1F*)histo_HiggsPt_2->Rebin(nBins_pt,"Higgs_pt_2", Pt_Bins);
+  TH1F *h_HiggsPt_3 = (TH1F*)histo_HiggsPt_3->Rebin(nBins_pt,"Higgs_pt_3", Pt_Bins);
+  TH1F *h_HiggsPt_4 = (TH1F*)histo_HiggsPt_4->Rebin(nBins_pt,"Higgs_pt_4", Pt_Bins);
+  TH1F *h_HiggsPt_5 = (TH1F*)histo_HiggsPt_5->Rebin(nBins_pt,"Higgs_pt_5", Pt_Bins);
+  TH1F *h_HiggsPt_6 = (TH1F*)histo_HiggsPt_6->Rebin(nBins_pt,"Higgs_pt_6", Pt_Bins);
+  TH1F *h_HiggsPt_7 = (TH1F*)histo_HiggsPt_7->Rebin(nBins_pt,"Higgs_pt_7", Pt_Bins);
+  TH1F *h_HiggsPt_8 = (TH1F*)histo_HiggsPt_8->Rebin(nBins_pt,"Higgs_pt_8", Pt_Bins);
+  TH1F *h_HiggsPt_9 = (TH1F*)histo_HiggsPt_9->Rebin(nBins_pt,"Higgs_pt_9", Pt_Bins);
+  TH1F *h_HiggsPt_10 = (TH1F*)histo_HiggsPt_10->Rebin(nBins_pt,"Higgs_pt_10", Pt_Bins);
+  TH1F *h_HiggsPt_11 = (TH1F*)histo_HiggsPt_11->Rebin(nBins_pt,"Higgs_pt_11", Pt_Bins);
+  TH1F *h_HiggsPt_12 = (TH1F*)histo_HiggsPt_12->Rebin(nBins_pt,"Higgs_pt_12", Pt_Bins);
+  TH1F *h_HiggsPt_15 = (TH1F*)histo_HiggsPt_15->Rebin(nBins_pt,"Higgs_pt_15", Pt_Bins);
+  TH1F *h_HiggsPt_16 = (TH1F*)histo_HiggsPt_16->Rebin(nBins_pt,"Higgs_pt_16", Pt_Bins);
 
-  histo_nEvents->Scale(net_weight);
+  /*  histo_nEvents->Scale(net_weight);
   histo_dr_gen->Scale(net_weight);
   histo_Higgs_mass_gen->Scale(net_weight);
   h_HiggsPt_0->Scale(net_weight);
@@ -255,15 +271,24 @@ int main(int argc, char** argv)
   h_HiggsPt_4->Scale(net_weight);
   h_HiggsPt_5->Scale(net_weight);
   h_HiggsPt_6->Scale(net_weight);
+  h_HiggsPt_7->Scale(net_weight);
+  h_HiggsPt_8->Scale(net_weight);
+  h_HiggsPt_9->Scale(net_weight);
+  h_HiggsPt_10->Scale(net_weight);
+  h_HiggsPt_11->Scale(net_weight);
+  h_HiggsPt_12->Scale(net_weight);
+  h_HiggsPt_15->Scale(net_weight);
+  h_HiggsPt_16->Scale(net_weight);
 
   h_Hpt_gen_org->Scale(net_weight);
-  if (channel!="mutau")  h_Hpt_gen_org->Scale(0);
+  */
+  /*  if (channel!="mutau")  h_Hpt_gen_org->Scale(0);
 
   if (channel=="mutau")  h_Hpt_gen->Scale(net_weight*0.23);
   if (channel=="etau")   h_Hpt_gen->Scale(net_weight*0.23);
   if (channel=="tautau") h_Hpt_gen->Scale(net_weight*0.41);
   if (channel=="emu")    h_Hpt_gen->Scale(net_weight*0.06);
-  
+  */
   //histo_Hpt_gen->Write();
   //histo_nEvents->Write();
   //histo_dr_gen->Write();
@@ -278,7 +303,15 @@ int main(int argc, char** argv)
   h_HiggsPt_4->Write();
   h_HiggsPt_5->Write();
   h_HiggsPt_6->Write();
-
+  h_HiggsPt_7->Write();
+  h_HiggsPt_8->Write();
+  h_HiggsPt_9->Write();
+  h_HiggsPt_10->Write();
+  h_HiggsPt_11->Write();
+  h_HiggsPt_12->Write();
+  h_HiggsPt_15->Write();
+  h_HiggsPt_16->Write();
+  histo_nEvents->Write();
   //std::cout<<"XXXXXXXXXXXXX  line 223   XXXXXXXXXXXXX "<<'\n';
   f_input->Close();
   outputFile->Close();

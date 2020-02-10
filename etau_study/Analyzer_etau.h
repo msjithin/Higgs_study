@@ -5,8 +5,8 @@
 // found on file: /hdfs/store/user/jmadhusu/MonoHiggs_MC2017/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/crab_DYJetsToLL_M-50/180603_140815/0000/ggtree_mc_1.root
 //////////////////////////////////////////////////////////
 
-#ifndef Analyzer_mutau_study_h
-#define Analyzer_mutau_study_h
+#ifndef Analyzer_etau_h
+#define Analyzer_etau_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -50,7 +50,7 @@
 
 using namespace std;
 
-class Analyzer_mutau_study {
+class Analyzer_etau {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -84,7 +84,7 @@ public :
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
    // Declaration of leaf types
-      Int_t           run;
+   Int_t           run;
    Long64_t        event;
    Int_t           lumis;
    Bool_t          isData;
@@ -434,13 +434,6 @@ public :
    vector<int>     *mcStatus;
    vector<unsigned short> *mcStatusFlag;
    vector<int>     *mcIndex;
-   vector<int>     *mcDaughterPID;  
-   vector<float>   *mcCharge; 
-   vector<int>     *mcMotherPID;
-   vector<int>     *mcMotherStatus;
-   vector<int>     *mcDaughterStatus;
-   vector<int>     *mcDaughterList;
-   vector<unsigned short> *mcTauDecayMode;    
 
    // List of branches
    TBranch        *b_run;   //!
@@ -793,17 +786,10 @@ public :
    TBranch        *b_mcStatus;   //!
    TBranch        *b_mcStatusFlag;   //!
    TBranch        *b_mcIndex;   //!
-   TBranch        *b_mcDaughterPID;   //!
-   TBranch        *b_mcCharge;   //!    
-   TBranch        *b_mcMotherPID;   //!    
-   TBranch        *b_mcMotherStatus;   //!
-   TBranch        *b_mcDaughterStatus;   //!
-   TBranch        *b_mcDaughterList;   //!
-   TBranch        *b_mcTauDecayMode;   //!     
 
-   //   Analyzer_mutau_study(TTree *tree=0);
-   Analyzer_mutau_study(const char* file1, const char* file2);
-   virtual ~Analyzer_mutau_study();
+   //   Analyzer_etau(TTree *tree=0);
+   Analyzer_etau(const char* file1, const char* file2);
+   virtual ~Analyzer_etau();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -813,19 +799,11 @@ public :
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
    virtual void BookHistos(const char* file2);
-   virtual void fillHistos(int histoNumber, double event_weight,int higgs_index);
+   virtual void fillHistos(int histoNumber, double event_weight, int muIndex, int tauIndex, int higgs_Index);
    virtual double DeltaPhi(double phi1, double phi2);
-   virtual vector<int> getMuCand(double pt, double eta);
+   virtual vector<int> getEleCand(double pt, double eta);
    virtual vector<int> getTauCand(double pt, double eta);
    virtual vector<int> found_higgs();
-   virtual vector<int> found_muon();
-   virtual vector<int> found_electron();
-   virtual vector<int> found_tau();
-   virtual vector<int> found_tauh();
-   virtual vector<int> found_tauNeu(); 
-   virtual vector<int> found_daughter();
-   virtual vector<int> found_mother();  
-   virtual vector<int> getASRTauCand(double tauPtCut, double tauEtaCut);
    virtual bool thirdLeptonVeto();
    virtual bool check_jets();
    virtual double prefiring_weight(TH2F* prefiring_photon, TH2F* prefiring_jet);
@@ -843,8 +821,8 @@ public :
 
 #endif
 
-#ifdef Analyzer_mutau_study_cxx
-Analyzer_mutau_study::Analyzer_mutau_study(const char* file1, const char* file2)
+#ifdef Analyzer_etau_cxx
+Analyzer_etau::Analyzer_etau(const char* file1, const char* file2)
 {
   TChain *chain = new TChain("phoJetNtuplizer/eventTree");
   //TH1F *inspected_events = new TH1F("inspected_events","inspected_events", 5, 0, 5);
@@ -886,7 +864,7 @@ Analyzer_mutau_study::Analyzer_mutau_study(const char* file1, const char* file2)
 }
 
 
-Analyzer_mutau_study::~Analyzer_mutau_study()
+Analyzer_etau::~Analyzer_etau()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
@@ -896,13 +874,13 @@ Analyzer_mutau_study::~Analyzer_mutau_study()
    fileName->Close();
 }
 
-Int_t Analyzer_mutau_study::GetEntry(Long64_t entry)
+Int_t Analyzer_etau::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t Analyzer_mutau_study::LoadTree(Long64_t entry)
+Long64_t Analyzer_etau::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -915,7 +893,7 @@ Long64_t Analyzer_mutau_study::LoadTree(Long64_t entry)
    return centry;
 }
 
-void Analyzer_mutau_study::Init(TChain *tree)
+void Analyzer_etau::Init(TChain *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -1212,13 +1190,6 @@ void Analyzer_mutau_study::Init(TChain *tree)
    mcStatus = 0;
    mcStatusFlag = 0;
    mcIndex = 0;
-   mcDaughterPID = 0;
-   mcCharge = 0;    
-   mcMotherPID = 0;  
-   mcMotherStatus = 0;
-   mcDaughterStatus = 0;
-   mcDaughterList = 0;
-   mcTauDecayMode = 0;   
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -1576,17 +1547,11 @@ void Analyzer_mutau_study::Init(TChain *tree)
    fChain->SetBranchAddress("mcStatus", &mcStatus, &b_mcStatus);
    fChain->SetBranchAddress("mcStatusFlag", &mcStatusFlag, &b_mcStatusFlag);
    fChain->SetBranchAddress("mcIndex", &mcIndex, &b_mcIndex);
-   fChain->SetBranchAddress("mcDaughterPID", &mcDaughterPID, &b_mcDaughterPID); 
-   fChain->SetBranchAddress("mcCharge", &mcCharge, &b_mcCharge);   
-   fChain->SetBranchAddress("mcMotherPID", &mcMotherPID, &b_mcMotherPID);    
-   fChain->SetBranchAddress("mcMotherStatus", &mcMotherStatus, &b_mcMotherStatus);
-   fChain->SetBranchAddress("mcDaughterStatus", &mcDaughterStatus, &b_mcDaughterStatus);
-   fChain->SetBranchAddress("mcDaughterList", &mcDaughterList, &b_mcDaughterList);
-   fChain->SetBranchAddress("mcTauDecayMode", &mcTauDecayMode, &b_mcTauDecayMode);    
+
    Notify();
 }
 
-Bool_t Analyzer_mutau_study::Notify()
+Bool_t Analyzer_etau::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -1597,18 +1562,18 @@ Bool_t Analyzer_mutau_study::Notify()
    return kTRUE;
 }
 
-void Analyzer_mutau_study::Show(Long64_t entry)
+void Analyzer_etau::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t Analyzer_mutau_study::Cut(Long64_t entry)
+Int_t Analyzer_etau::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef Analyzer_mutau_study_cxx
+#endif // #ifdef Analyzer_etau_cxx

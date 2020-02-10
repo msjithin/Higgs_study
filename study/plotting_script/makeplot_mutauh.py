@@ -304,7 +304,7 @@ h1.GetYaxis().SetTitle("ratio")
 h1.GetYaxis().SetLabelSize(0.08)
 if ( h1.GetMaximum() >= 0.5):
   h1.SetMaximum(h1.GetMaximum())
-elif ( h1.GetMaximum() < 0.5 and h1.GetMaximum()>=0.3)              
+elif ( h1.GetMaximum() < 0.5 and h1.GetMaximum()>=0.3):
   h1.SetMaximum(0.5)
 elif ( h1.GetMaximum() < 0.3 and h1.GetMaximum() >0.15):
   h1.SetMaximum(0.3)

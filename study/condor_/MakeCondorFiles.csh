@@ -29,7 +29,7 @@ request_disk         = 2048000
 
 #OutputDestination = /nfs_scratch/jmadhusu/CMSSW_9_4_13/src/monoH/Out_${3}
 #Initialdir = Out_${3}         
-Transfer_Input_Files = /nfs_scratch/jmadhusu/CMSSW_10_2_10/src/boosted_H/${1}, /nfs_scratch/jmadhusu/CMSSW_10_2_10/src/boosted_H/, /nfs_scratch/jmadhusu/CMSSW_10_2_10/src/boosted_H/makeHisto.h 
+Transfer_Input_Files = /nfs_scratch/jmadhusu/CMSSW_10_2_10/src/boosted_H/${1}, /nfs_scratch/jmadhusu/CMSSW_10_2_10/src/boosted_H/
 
 output               = \$(Cluster)_\$(Process)_${3}.out
 error                = \$(Cluster)_\$(Process)_${3}.err

@@ -1,0 +1,628 @@
+ggh sample analysis.....
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 110000 events.
+Finished entry 15000/109999
+Finished entry 109999/109999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 110000.000000
+Inspected genWeightd 108830.000000   % change= 1.063636
+   METFiltersPassed 108830.000000   % change= 0.000000
+    SingleTrgPassed 8864.000000   % change= 91.855187
+     GoodMuonPassed 7915.000000   % change= 10.706227
+      GoodTauPassed 5544.000000   % change= 29.955780
+         opp charge 1546.000000   % change= 72.113997
+ PassedThirdLepVeto 1376.000000   % change= 10.996119
+     PassedBjetVeto 1321.000000   % change= 3.997093
+       DeltaRPassed 1319.000000   % change= 0.151400
+ TauRejectionPassed 1011.000000   % change= 23.351024
+      Total change :99.080909
+*******************************************
+*******************************************
+Number of events inspected: 110000
+Number of events inspected (minus negative gen. weights): 108830.000000
+*******************************************
+    n higgs found = 110000
+    n found_mt    = 110000
+    n h->mutau    = 24380
+    n expected    = 24310.000000
+    percent change =0.287947 % 
+nMuCand_1=1469 nMuCand_2=81 nMuCand_3=0
+nTauCand_1=1469 nTauCand_2=81 nTauCand_3=0
+Runtime = 104
+plotting ......... 
+Info in <TCanvas::Print>: png file plot_Higgs_pt_gen_org.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_Higgs_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_phi_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_eta_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_phi_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_eta_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauMom_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_cutflow_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_cutflow_n_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_reco.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_reco.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCand_size.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCand_size.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_5.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_6.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_7.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2D_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2D_highPt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_5.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_6.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_7.png has been created
+weight =  2.54302857668
+================================================================
+
+====> Created exe file : 
+-rwxrwxr-x 1 ms ms 60240 Feb  6 07:39 postAnalyzer_mutau.exe
+====> Done.
+================================================================
+*************  Input file         ************ 
+               study_mutau_110k_ggh.root 
+*************  Output written to  ************ 
+               ggh_aw_mutau.root 
+****************************************************** 
+************* ngen = 108830 ************* 
+ weight = 2.5430285767
+*************** root file made ***************
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_0.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_0
+ratio maximum =  6.33333349228
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_1.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_1
+ratio maximum =  1.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_2.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_2
+ratio maximum =  1.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_3.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_3
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_4.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_4
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_5.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_5
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_6.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_6
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_7.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_7
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_8.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_8
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_9.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_9
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_10.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_10
+ratio maximum =  0.83333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_11.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_11
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_12.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_12
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_15.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_15
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_16.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_16
+ratio maximum =  0.3
+"cd .." command filed with exit code 0.
+ggh sample analysis.....
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 110000 events.
+Finished entry 15000/109999
+Finished entry 109999/109999
+All events checked.
+*******************************************
+******************Jithin's original*************************
+    Initial entries 110000.000000
+Inspected genWeightd 108830.000000   % change= 1.063636
+   METFiltersPassed 108830.000000   % change= 0.000000
+    SingleTrgPassed 8864.000000   % change= 91.855187
+     GoodMuonPassed 7915.000000   % change= 10.706227
+      GoodTauPassed 5544.000000   % change= 29.955780
+         opp charge 1546.000000   % change= 72.113997
+ PassedThirdLepVeto 1376.000000   % change= 10.996119
+     PassedBjetVeto 1321.000000   % change= 3.997093
+       DeltaRPassed 1319.000000   % change= 0.151400
+ TauRejectionPassed 1011.000000   % change= 23.351024
+      Total change :99.080909
+*******************************************
+*******************************************
+Number of events inspected: 110000
+Number of events inspected (minus negative gen. weights): 108830.000000
+*******************************************
+    n higgs found = 110000
+    n found_mt    = 110000
+    n h->mutau    = 24380
+    n expected    = 24310.000000
+    percent change =0.287947 % 
+nMuCand_1=1469 nMuCand_2=81 nMuCand_3=0
+nTauCand_1=1469 nTauCand_2=81 nTauCand_3=0
+Runtime = 130
+plotting ......... 
+Info in <TCanvas::Print>: png file plot_Higgs_pt_gen_org.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_Higgs_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_phi_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_eta_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_phi_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_eta_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauMom_pt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_cutflow_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_cutflow_n_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_mu_Charge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tau_Charge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_reco.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_reco.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nMu_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_nTau_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCand_size.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCand_size.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muDz_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muD0_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muonID_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_relMuIso_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muCharge_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauPt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauEta_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauIso_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauDecayMode_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_tauCharge_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_5.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_6.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_7.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2D_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muPt_Hpt_2D_highPt_gen.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_1.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_2.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_3.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_4.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_5.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_6.png has been created
+weight =  2.54302857668
+Info in <TCanvas::Print>: png file plot_muEta_Hpt_7.png has been created
+weight =  2.54302857668
+================================================================
+
+====> Created exe file : 
+-rwxrwxr-x 1 ms ms 60240 Feb  6 10:47 postAnalyzer_mutau.exe
+====> Done.
+================================================================
+*************  Input file         ************ 
+               study_mutau_110k_ggh.root 
+*************  Output written to  ************ 
+               ggh_aw_mutau.root 
+****************************************************** 
+************* ngen = 108830 ************* 
+ weight = 2.5430285767
+*************** root file made ***************
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_0.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_0
+ratio maximum =  6.33333349228
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_1.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_1
+ratio maximum =  1.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_2.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_2
+ratio maximum =  1.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_3.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_3
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_4.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_4
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_5.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_5
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_6.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_6
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_7.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_7
+ratio maximum =  0.15
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_8.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_8
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_9.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_9
+ratio maximum =  1.33333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_10.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_10
+ratio maximum =  0.83333337307
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_11.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_11
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_12.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_12
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_15.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_15
+ratio maximum =  0.5
+Info in <TCanvas::Print>: png file plot_Higgs_pt_mutau_16.png has been created
+Item / histogram name =  Higgs_pt
+histo 1               =  Higgs_pt_gen
+histo 2               =  Higgs_pt_16
+ratio maximum =  0.3
+"cd .." command filed with exit code 0.

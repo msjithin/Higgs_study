@@ -23,5 +23,5 @@ python makeplot_mutauh.py -in $inFile -lY -name Higgs_pt -cat 15 -ch mutau
 python makeplot_mutauh.py -in $inFile -lY -name Higgs_pt -cat 16 -ch mutau
 
 
-mv plot_* /afs/hep.wisc.edu/home/ms/public_html/boosted_study/study_1/
+#mv plot_* /afs/hep.wisc.edu/home/ms/public_html/boosted_study/study_1/
 
