@@ -228,7 +228,7 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
        found_H=true;
        //std::cout<<jentry <<" : Higgs cand size = "<<higgsCand.size()<< endl;
        //for (int i=0; i< higgsCand.size(); i++)
-       //std::cout<<"   "<<higgsCand[i]<< endl;
+       //	 std::cout<<"    "<<higgsCand[i]<<"mc status :"<<mcStatus->at(higgsCand[i])<<endl;
        if (found_H==true)nHiggs++;
        h_Hpt_gen_org->Fill(mcPt->at(higgsCand[0]), event_weight);
        //std::cout<<"jentry = "<< jentry<<  endl;
@@ -348,16 +348,17 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 
 	     }
 	 }////// gen level closing
+       
        plotFill("nMu_reco",  nMu ,  5 , 0 , 5);
        plotFill("nTau_reco", nTau , 5 , 0 , 5);
 
        ////// reco selection begin
-       //  if(metFilters==0)
+       if(metFilters==0)
 	 {
 	   //fabs(genWeight) > 0.0 ? event_weight *= genWeight/fabs(genWeight) : event_weight = 0;
 	   nMETFiltersPassed+=event_weight;
 	   fillHistos(0,event_weight, higgsCand[0]);
-
+	   
 	   if(! (HLTEleMuX>>21&1 == 1 ||
 		 HLTEleMuX>>60&1 == 1 ||
 		 HLTTau>>0&1  == 1      ))continue;
@@ -367,29 +368,12 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 	   plotFill("nTau_1", nTau , 5 , 0 , 5);
 	   //plotFill("muCand_size_1", muCand.size() , 5 , 0 , 5);
 	   //plotFill("muCand_size_1", muCand.size() , 5 , 0 , 5);
-	   for (int iMu=0; iMu<nMu; iMu++)
-             {
-               plotFill("muPt_1",  muPt->at(iMu) , 40 , 0 , 200);
-               plotFill("muEta_1", muEta->at(iMu), 30, -6, 6);
-               plotFill("muDz_1",  muDz->at(iMu), 20, -0.5, 0.5);
-               plotFill("muD0_1",  muD0->at(iMu), 24, -0.06, 0.06);
-               plotFill("muonID_1",muIDbit->at(iMu)>>1&1, 4, -2, 2); // muonID
-               float relMuIso = ( muPFChIso->at(iMu) + max( muPFNeuIso->at(iMu) + muPFPhoIso->at(iMu) - 0.5 *muPFPUIso->at(iMu) , 0.0 )) / (muPt->at(iMu));
-               plotFill("relMuIso_1", relMuIso, 10, 0, 0.5);
-	       plotFill("muCharge_1", muCharge->at(iMu), 8, -2, 2 );
-             }
-	   for (int iTau=0; iTau<nTau; iTau++)
-	     {
-	       plotFill("tauPt_1",  tau_Pt->at(iTau) , 40 , 0 , 200);
-	       plotFill("tauEta_1", tau_Eta->at(iTau), 30, -6, 6);
-	       plotFill("tauIso_1", tau_IDbits->at(iTau)>>16&1, 4, -2, 2);
-	       plotFill("tauDecayMode_1", tau_DecayMode->at(iTau) , 10, 0, 10);
-	       plotFill("tauCharge_1", tau_Charge->at(iTau), 8, -2, 2 );
+	   
+	   
 
-	     }
 
-	   muCand = getMuCand(20,2.4);  
-	   if(!(muCand.size()>0) ) continue;
+	   muCand = getMuCand(20,2.4);  ///// muons selected 
+	   if( (muCand.size()==0) ) continue;
 	   nGoodMuonPassed+=event_weight;
 	   fillHistos(2,event_weight, higgsCand[0]);
 	   //if ( muCand.size()==1)muCand_1++;
@@ -407,8 +391,8 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 	       plotFill("muDz_2",  muDz->at(iMu), 20, -0.5, 0.5);
 	       plotFill("muD0_2",  muD0->at(iMu), 24, -0.06, 0.06);
 	       plotFill("muonID_2",muIDbit->at(iMu)>>1&1, 4, -2, 2); // muonID
-	       float relMuIso = ( muPFChIso->at(iMu) + max( muPFNeuIso->at(iMu) + muPFPhoIso->at(iMu) - 0.5 *muPFPUIso->at(iMu) , 0.0 )) / (muPt->at(iMu));
-	       plotFill("relMuIso_2", relMuIso, 10, 0.0, 0.5);
+	       //float relMuIso = ( muPFChIso->at(iMu) + max( muPFNeuIso->at(iMu) + muPFPhoIso->at(iMu) - 0.5 *muPFPUIso->at(iMu) , 0.0 )) / (muPt->at(iMu));
+	       plotFill("relMuIso_2", muIDbit->at(iMu)>>8&1, 4, -2, 2);
 	       plotFill("muCharge_2", muCharge->at(iMu), 8, -2, 2 );
 	     }
 	   for (int iTau=0; iTau<nTau; iTau++)
@@ -422,6 +406,9 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 	     }
 
 	   //plotFill("gen_H_pT",  mcPt->at(higgsCand[0]) , 100 , 0 , 1000);
+	   
+
+	   //cout<<" muCand.size() :"<<  muCand.size() << endl;
 	   int mu_selected=-1;
 	   tauCand = getTauCand(30,2.3, muCand[0], mu_selected);
 	   //if( tauCand.size()==0 && muCand.size()>1 ) tauCand = getTauCand(30,2.3, muCand[1], mu_selected);
@@ -431,6 +418,7 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 
 	   if( tauCand.size()>0 ) 
 	     {
+	       //cout<<" tauCand.size() :"<<  tauCand.size() << endl;
 	       //cout<<"mu selected = "<< mu_selected<<endl;
 	       plotFill("tauCand_size", tauCand.size() , 5 , 0 , 5);
 	       nGoodTauPassed+=event_weight;
@@ -477,7 +465,6 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 	       //if ( muCand.size()>1 || tauCand.size()>1 )std::cout<<"   mu: "<<muCand.size()<<" , tau:"<<tauCand.size()<<endl;
 	       for (int iMu=0; iMu<muCand.size(); iMu++)
 		 {
-		   
 		   for (int iTau=0; iTau<tauCand.size(); iTau++)
 		     {
 		       //double deltaR_ = dR(muCand[iMu], tauCand[iTau]); 
@@ -492,13 +479,17 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 	       //reco_mu.push_back(muCand[0]);
 	       //reco_tau.push_back(tauCand[0]);
 	       //std::cout<<jentry<<", event:"<<event <<", run:"<<run<<", lumi:"<<lumis<<" :   mu: "<<muCand.size()<<", charge:"<<muCharge->at(muCand[0])<<" , tau:"<<tauCand.size()<<", charge:"<<tau_Charge->at(tauCand[0])<<endl;
-	       if ( reco_tau.size() >0  ) 
+	       //std::cout<<jentry<<", event:"<<event <<", run:"<<run<<", lumi:"<<lumis<<", reco_mu :"<<reco_mu.size() <<", reco_tau :"<<reco_tau.size() <<endl; 
+	       if (  reco_tau.size() >0 && reco_mu.size() >0 ) 
 		 {
+		   if(reco_mu.size()>1 || reco_tau.size()>1)
+		     std::cout<<jentry<<", event:"<<event <<", run:"<<run<<", lumi:"<<lumis<<", reco_mu :"<<reco_mu.size() <<", reco_tau :"<<reco_tau.size() <<endl;
+	   
 		   plotFill("nMu_4",  nMu ,  5 , 0 , 5);
 		   plotFill("nTau_4", nTau , 5 , 0 , 5);
-		   plotFill("muCand_4",  reco_mu.size() ,  5 , 0 , 5);
-		   plotFill("tauCand_4",  reco_tau.size() ,  5 , 0 , 5);
-		   for (int iMu=0; iMu<reco_mu.size(); iMu++)
+		   //plotFill("muCand_4",  reco_mu.size() ,  5 , 0 , 5);
+		   //plotFill("tauCand_4",  reco_tau.size() ,  5 , 0 , 5);
+		   for (int iMu=0; iMu<muCand.size(); iMu++)
 		     {
 		       plotFill("muPt_4",  muPt->at(iMu) , 40 , 0 , 200);
 		       plotFill("muEta_4", muEta->at(iMu), 30, -6, 6);
@@ -509,7 +500,7 @@ void Analyzer_mutau_updated::Loop(Long64_t maxEvents, int reportEvery, string Sa
 		       plotFill("relMuIso_4", relMuIso, 10, 0, 0.5);
 		       plotFill("muCharge_4", muCharge->at(iMu), 8, -2, 2 );
 		     }
-		   for (int iTau=0; iTau<reco_tau.size(); iTau++)
+		   for (int iTau=0; iTau<tauCand.size(); iTau++)
 		     {
 		       plotFill("tauPt_4",  tau_Pt->at(iTau) , 40 , 0 , 200);
 		       plotFill("tauEta_4", tau_Eta->at(iTau), 30, -6, 6);
@@ -714,7 +705,8 @@ std::vector<int> Analyzer_mutau_updated::getMuCand(double muPtCut, double muEtaC
        if( muPt->at(iMu) > muPtCut  && fabs(muEta->at(iMu))< muEtaCut  && fabs(muDz->at(iMu)) < 0.2 && fabs(muD0->at(iMu))<0.045 ) kinematic = true;
        if( muIDbit->at(iMu)>>1&1==1 ) muonID = true;//|| muIDbit->at(iMu)>>8&1==1 || muIDbit->at(iMu)>>17&1==1  ) muonID = true;
        float relMuIso = ( muPFChIso->at(iMu) + max( muPFNeuIso->at(iMu) + muPFPhoIso->at(iMu) - 0.5 *muPFPUIso->at(iMu) , 0.0 )) / (muPt->at(iMu));
-       if( relMuIso < 0.15 ) muonIso = true;
+       //if( relMuIso < 0.15 ) muonIso = true;
+       if( muIDbit->at(iMu)>>8&1==1 ) muonIso = true;
        if(  (HLTEleMuX>>21&1 == 1 && muPt->at(iMu)>28) 
 	    || (HLTEleMuX>>60&1 == 1 && muPt->at(iMu)>25) 
 	    || (   HLTTau>>0&1  == 1 && muPt->at(iMu)>21 && muPt->at(iMu)<25 && muEta->at(iMu)<2.4 ) 
@@ -731,7 +723,7 @@ std::vector<int> Analyzer_mutau_updated::found_higgs(){
   std::vector<int> tmpCand;    tmpCand.clear();   
   bool found_H=false;
   for(int i=0; i<nMC;i++){
-    if (fabs(mcPID->at(i))==25)
+    if (fabs(mcPID->at(i))==25 && mcStatus->at(i)==22  )
       {
 	tmpCand.push_back(i);
       }

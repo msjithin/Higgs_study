@@ -341,6 +341,8 @@ else:
 legende=make_legend()
 if histoname=="cutflow" or histoname=='cutflow_n':
   legende.AddEntry(Histo_gen,"reco","f")
+elif (category_ != "gen"):
+  legende.AddEntry(Histo_gen,"reco","elp")
 else :
   legende.AddEntry(Histo_gen,"gen","elp")
 

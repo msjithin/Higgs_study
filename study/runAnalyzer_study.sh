@@ -6,7 +6,8 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 
-./rootcom Analyzer_mutau_updated analyze_mutau_updated
+#./rootcom Analyzer_mutau_updated analyze_mutau_updated
+./rootcom new_analyzer analyze_mutau_updated
 outFile="study_mutau_110k.root"
 start=`date +%s`
 nEvents=110000
