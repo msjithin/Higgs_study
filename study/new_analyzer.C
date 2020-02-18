@@ -215,8 +215,8 @@ void new_analyzer::Loop(Long64_t maxEvents, int reportEvery, string SampleName, 
 		       plotFill("tauIso_3", tau_IDbits->at(tauCand[0])>>16&1, 4, -2, 2);
 		       plotFill("tauDecayMode_3", tau_DecayMode->at(tauCand[0]) , 10, 0, 10);
 		       plotFill("tauCharge_3", tau_Charge->at(tauCand[0]), 8, -2, 2 );
-		       
-
+		       plotFill("tauAntiEle_3", tau_IDbits->at(tauCand[0])>>3&1==1, 8, -2, 2 );
+		       plotFill("tauAntiMu_3", tau_IDbits->at(tauCand[0])>>4&1==1, 8, -2, 2 );
 
 		       reco_mu.clear();reco_tau.clear();
 		       //reco_mu.push_back( leading_muon );
@@ -250,6 +250,8 @@ void new_analyzer::Loop(Long64_t maxEvents, int reportEvery, string SampleName, 
 			   plotFill("tauIso_4", tau_IDbits->at(reco_tau[0])>>16&1, 4, -2, 2);
 			   plotFill("tauDecayMode_4", tau_DecayMode->at(reco_tau[0]) , 10, 0, 10);
 			   plotFill("tauCharge_4", tau_Charge->at(reco_tau[0]), 8, -2, 2 );
+			   plotFill("tauAntiEle_4", tau_IDbits->at(reco_tau[0])>>3&1==1, 8, -2, 2 );
+			   plotFill("tauAntiMu_4", tau_IDbits->at(reco_tau[0])>>4&1==1, 8, -2, 2 );
 
 			   if( thirdLeptonVeto()==true )
 			     {
