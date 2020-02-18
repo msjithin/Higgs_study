@@ -1,0 +1,8 @@
+********** for MC *********
+All files added.
+Initializing chain.
+Coming in: 
+nentries:9990000
+Running over 9990000 events.
+runAnalyzer_study.sh: line 14: 1723528 Terminated              ./analyze_mutau_updated /hdfs/store/user/jmadhusu/_MC2018_Autumn18_monoHiggs_07Nov/GluGluHToTauTau_M125_13TeV_powheg_pythia8/crab_job_GluGluHToTauTau/191107_195327/0000/ study_mt_1.root -1 1000 2018_test
+"./analyze_mutau_updated /hdfs/store/user/jmadhusu/_MC2018_Autumn18_monoHiggs_07Nov/GluGluHToTauTau_M125_13TeV_powheg_pythia8/crab_job_GluGluHToTauTau/191107_195327/0000/ study_mt_1.root -1 1000 2018_test" command filed with exit code 143.
